@@ -1,8 +1,8 @@
 // db.js
 const mongoose = require('mongoose'); // Importamos la librería Mongoose
-
+require('dotenv').config(); // Cargamos las variables de entorno desde el archivo .env
 // URI de conexión a MongoDB (reemplaza los datos según tu configuración)
-const mongoURI = 'mongodb+srv://2015486:123@cluster0.8tedz8h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const mongoURI = process.env.DB_HOST;
 
 // Opciones recomendadas para evitar advertencias
 const options = {

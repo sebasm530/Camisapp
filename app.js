@@ -1,9 +1,7 @@
 const express = require('express');
-const connectDB = require('./config/db')
+const connectDB = require('./config/db'); // Importamos la función de conexión a la base de datos
 const path = require('path');
 const { verificarToken } = require('./seguridad/auth');
-const { connect } = require('http2');
-
 const app = express();
 
 // Conexión a MongoDB
@@ -15,6 +13,7 @@ app.use(express.json());
 // Rutas
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/camisetas', require('./routes/camisetas'));
+
 //app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/camiseta', verificarToken, (req, res) => {
@@ -27,6 +26,10 @@ app.get('/registro', (req, res) => {
 
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+app.get('/carrusel', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'carrusel.html'));
 });
 
 // Iniciar servidor
